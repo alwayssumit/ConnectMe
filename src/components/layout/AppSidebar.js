@@ -6,9 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { faFileLines } from "@fortawesome/free-regular-svg-icons";
+import { Page } from "@/models/page";
 
-export default function AppSidebar(){
+
+
+
+
+export default function AppSidebar({page}){
+
     const path=usePathname();
+    
     return(
         <nav  className="inline-flex mx-auto flex-col text-center mt-8 gap-2 
         text-gray-500">
@@ -20,14 +27,22 @@ export default function AppSidebar(){
          <span className="">My Page</span>
 
          </Link>
+         {page ? (
          <Link href={'/analytics'} 
           className={"flex gap-4 p-2 " +
            (path==="/analytics"? 'text-blue-500':'')}>
 
          <FontAwesomeIcon icon={faChartLine} fixedWidth={true} className={'w-6 h-6'}/>
          <span className="">Analytics</span>
-
          </Link>
+         ):(<Link href={'/account'} 
+          className={"flex gap-4 p-2 " +
+           (path==="/analytics"? 'text-blue-500':'')}>
+
+         <FontAwesomeIcon icon={faChartLine} fixedWidth={true} className={'w-6 h-6'}/>
+         <span className="">Analytics</span>
+
+         </Link>)}
          <LogoutButton 
            className={"flex gap-4 items-center p-2 text-gray-500"}
            iconLeft={true}

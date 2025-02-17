@@ -11,8 +11,8 @@ export default async function Home() {
     <main>
       <section className="pt-32">
         {session ? (
-          <Link href="/account">
-            Hello, {session.user?.name}
+          <Link className="button-71" href="/account">
+          Go to your Account Page
           </Link>
         ) : (
           <>

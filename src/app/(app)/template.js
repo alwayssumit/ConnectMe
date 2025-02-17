@@ -12,6 +12,7 @@ import { Page } from "@/models/page";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import cloneDeep from "clone-deep";
 
 const lato =Lato({subsets:['latin'],weight:['400','700']})
 
@@ -28,6 +29,8 @@ export default async function AppTemplate({ children }) {
 if(!session) redirect('/');
 
 const page=await Page.findOne({owner:session.user.email});
+const leanPage=cloneDeep(page.toJSON());
+leanPage._id=leanPage._id.toString();
   return (
     <html lang="en">
       <body className={lato.className}>
@@ -55,7 +58,7 @@ const page=await Page.findOne({owner:session.user.email});
           </Link>
          )}
          <div className="text-center">
-           <AppSidebar/>
+           <AppSidebar page={leanPage}/>
          </div>
       </div>
       </aside>

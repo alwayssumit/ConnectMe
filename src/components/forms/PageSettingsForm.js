@@ -27,7 +27,7 @@ export default function PageSettingsForm({page,user}) {
       inputFile.addEventListener('change', (event) => {
         const file = event.target.files[0];
         if (file) {
-          setProfilePic(URL.createObjectURL(file)); // Update image preview
+          setProfilePic(URL.createObjectURL(file));
         }
       });
     }
