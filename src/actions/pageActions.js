@@ -30,7 +30,7 @@ export default async function savePageSettings(formData){
     }
 
 export async function savePageButtons(formData){
-    mongoose.connect(process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGODB_URI);
     const session=await getServerSession(authOptions);
     if(session){
         const buttonValues={};
