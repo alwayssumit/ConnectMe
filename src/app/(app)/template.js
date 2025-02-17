@@ -26,6 +26,7 @@ export const metadata = {
 export default async function AppTemplate({ children }) {
   mongoose.connect(process.env.MONGODB_URI);
   const session=await getServerSession(authOptions);
+  const page=await Page.findOne({owner:session.user.email});
 if(!session) redirect('/');
 
 
