@@ -29,9 +29,6 @@ export default async function AppTemplate({ children }) {
 if(!session) redirect('/');
 
 const page=await Page.findOne({owner:session.user.email});
-if(page){
-  const leanPage=cloneDeep(page.toJSON());
-  leanPage._id=leanPage._id.toString();
 
   return (
     <html lang="en">
@@ -60,7 +57,7 @@ if(page){
           </Link>
          )}
          <div className="text-center">
-           <AppSidebar page={leanPage}/>
+           <AppSidebar page={page}/>
          </div>
       </div>
       </aside>
@@ -77,5 +74,5 @@ if(page){
     </html>
 
   );
-}
+
 }
