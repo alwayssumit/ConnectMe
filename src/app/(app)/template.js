@@ -28,7 +28,6 @@ export default async function AppTemplate({ children }) {
   const session=await getServerSession(authOptions);
 if(!session) redirect('/');
 
-const page=await Page.findOne({owner:session.user.email});
 
   return (
     <html lang="en">
@@ -57,7 +56,7 @@ const page=await Page.findOne({owner:session.user.email});
           </Link>
          )}
          <div className="text-center">
-           <AppSidebar page={page}/>
+           <AppSidebar/>
          </div>
       </div>
       </aside>
