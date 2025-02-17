@@ -4,6 +4,9 @@ import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, X
 
 
 export default function Chart({data}){
+    if (!data || data.length === 0) {
+        return <div>No data available</div>;
+      }
     const xLabelKey=Object.keys(data[0]).find(key=>key!== 'date');
         const dataWithoutGaps=[];
         data.forEach((value,index)=>{

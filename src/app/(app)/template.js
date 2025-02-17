@@ -29,7 +29,12 @@ export default async function AppTemplate({ children }) {
   const page=await Page.findOne({owner:session.user.email});
 if(!session) redirect('/');
 
-
+const pageDoc = await Page.findOne({ owner: session.user.email });
+  let leanPage = null;
+  if (pageDoc) {
+    leanPage = cloneDeep(pageDoc.toJSON());
+    leanPage._id = leanPage._id.toString();
+  }
   return (
     <html lang="en">
       <body className={lato.className}>
@@ -57,7 +62,7 @@ if(!session) redirect('/');
           </Link>
          )}
          <div className="text-center">
-           <AppSidebar/>
+           <AppSidebar page={leanPage} session={session}/>
          </div>
       </div>
       </aside>

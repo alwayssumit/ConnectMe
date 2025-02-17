@@ -21,6 +21,9 @@ export default async function AnalyticsPage(){
     const session=await getServerSession(authOptions);
     if(!session) redirect("/");
     const page=await Page.findOne({owner:session.user.email});
+    if(!page){
+      redirect("/account");
+    }
     const groupedViews=await Event.aggregate([
         {
             $match:{
