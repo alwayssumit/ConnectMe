@@ -29,8 +29,10 @@ export default async function AppTemplate({ children }) {
 if(!session) redirect('/');
 
 const page=await Page.findOne({owner:session.user.email});
-const leanPage=cloneDeep(page.toJSON());
-leanPage._id=leanPage._id.toString();
+if(page){
+  const leanPage=cloneDeep(page.toJSON());
+  leanPage._id=leanPage._id.toString();
+
   return (
     <html lang="en">
       <body className={lato.className}>
@@ -73,5 +75,7 @@ leanPage._id=leanPage._id.toString();
       
       </body>
     </html>
+
   );
+}
 }
