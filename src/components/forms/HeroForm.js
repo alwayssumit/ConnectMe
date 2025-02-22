@@ -40,7 +40,7 @@ export default function HeroForm({user}){
         <form 
         onSubmit={handleSubmit}
         className="inline-flex bg-white items-center shadow-lg shadow-gray-500/20">
-    <span className="bg-white py-4 pl-4">linklist.to/</span>
+    <span className="bg-white py-4 pl-4">ConnectMe.to/</span>
 
       <input type="text" className="" style={{backgroundColor:'white', marginBottom:0,paddingLeft:0}} placeholder="username"/>
       <button type="submit " className="bg-blue-500 text-white
