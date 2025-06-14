@@ -1,5 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LoginWithGoogle from "@/components/buttons/LoginWithGoogle";
+import HomePage from "@/components/HomePage";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
@@ -12,9 +13,7 @@ export default async function LoginPage(){
             <p className="text-center mb-6 text-gray-500">Sign to your account using one of the methods below</p>
             <LoginWithGoogle/>
           </div>) : (
-            <Link className="button-71" href="/account">
-          Go to your Account Page
-          </Link>
+           <HomePage/>
           )}
           
         </div>

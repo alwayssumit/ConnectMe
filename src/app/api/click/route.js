@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 
 
 export async function POST(req){
-    mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("CLICK");
     const url=new URL(req.url);
     const clickedLink=atob(url.searchParams.get('url'));
     const page=url.searchParams.get('page')

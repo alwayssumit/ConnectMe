@@ -3,17 +3,16 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { SessionProvider } from "next-auth/react";
 import Link from "next/link";
+import HomePage from "@/components/HomePage";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
     <main>
-      <section className="pt-32">
+      <section className="pt-3">
         {session ? (
-          <Link className="button-71" href="/account">
-          Go to your Account Page
-          </Link>
+          <HomePage/>
         ) : (
           <>
             <div className="max-w-md mb-8">
