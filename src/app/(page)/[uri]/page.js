@@ -71,7 +71,7 @@ export default async function UserPage({params}){
                 <Link
                 key={link.url}
                 target="_blank"
-                ping={process.env.NEXT_PUBLIC_URL+'api/click?url='+ btoa(link.url)+'&page='+page.uri}
+                ping={'api/click?url='+ btoa(link.url)+'&page='+page.uri}
                  className="bg-indigo-800 p-2  flex"
                 href={link.url}>
                     <div className=" relative -left-4 
